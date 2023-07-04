@@ -1,13 +1,46 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #ff8a00;
+  --primary-accent: #fff6e4;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+@layer components {
+  .btn-LogIn {
+    @apply text-sm text-[var(--primary)]  bg-[var(--primary-accent)] px-3 py-1 rounded-md;
+  }
+  .btn-SignIn {
+    @apply border text-sm text-white bg-[var(--primary)] px-3 py-1 rounded-md;
+  }
+  .menuList {
+    @apply fixed bottom-0 right-0 left-0 bg-white px-2 shadow-lg md:hidden;
+  }
+  .navbarDesktop {
+    @apply fixed flex navbar min-h-0 bg-white justify-between px-5 shadow-md;
+  }
+  .navbarMobile {
+    @apply fixed flex navbar min-h-0  -top-1 bg-[var(--primary)] justify-between p-3 shadow-md;
+  }
+}
+
+@layer utilities {
+  .animateMenuList {
+    @apply h-0 overflow-hidden transition-all duration-1000 ease-in;
+  }
+
+  .animateMenuList__active {
+    @apply h-screen transition-all duration-1000 ease-in-out;
+  }
+
+  .listActive {
+    @apply text-[var(--primary)];
+  }
 }

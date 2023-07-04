@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import MenuListMobile from './components/MenuListMobile';
+import Navbar from './components/Navbar';
 
 function App() {
+  const [isMenu, setIsMenu] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="bg-slate-100 border h-[2000px]">
+      <Navbar setIsMenu={setIsMenu} isMenu={isMenu} />
+      <MenuListMobile isMenu={isMenu} setIsMenu={setIsMenu} />
+      <main className="max-w-2xl mx-auto">
+        {/* <div id="Home" className="h-96 bg-blue-500 pt-16">
+          Home
+        </div>
+        <div id="Product" className="h-96 bg-green-500 pt-16">
+          Product
+        </div>
+        <div id="Catagory" className="h-96 bg-red-500 pt-16 mb-20">
+          Category
+        </div> */}
+      </main>
+    </section>
   );
 }
 
