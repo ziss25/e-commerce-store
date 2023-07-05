@@ -37,7 +37,7 @@
   }
 
   .animateMenuList__active {
-    @apply h-screen top-0 transition-all duration-1000 ease-in-out;
+    @apply h-screen pt-5 transition-all duration-1000 ease-in-out;
   }
 
   .listActive {
