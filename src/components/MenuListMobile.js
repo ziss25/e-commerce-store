@@ -1,17 +1,24 @@
+import { useEffect, useState } from 'react';
 import close from '../icons/close.svg';
 
 const MenuListMobile = ({ isMenu, setIsMenu }) => {
+  const [category, setCategory] = useState([]);
+
   let classMenu;
-  switch (isMenu) {
-    // menu active
-    case true:
-      classMenu = 'menuList animateMenuList animateMenuList__active px-2';
-      break;
-    default:
-      // menu non active
-      classMenu = 'menuList animateMenuList';
-      break;
+  if (isMenu) {
+    classMenu = 'menuList animateMenuList animateMenuList__active px-2';
+  } else {
+    classMenu = 'menuList animateMenuList';
   }
+
+  const getCategory = async () => {
+    const data = await (await fetch('https://api.creativeacademyid.com/category')).json();
+    setCategory(data);
+  };
+
+  useEffect(() => {
+    getCategory();
+  }, []);
 
   return (
     <div className={classMenu}>
@@ -32,12 +39,15 @@ const MenuListMobile = ({ isMenu, setIsMenu }) => {
         <button className="btn btn-sm  join-item rounded-sm text-xs text-[var(--primary)] bg-[var(--primary-accent)]">Sign In</button>
       </div>
 
-      <div className="Category px-1 mt-3">
+      <div className="Category px-1 my-3">
         <h3 className="font-semibold">All Category</h3>
         <ul className="px-2">
-          <li className="border p-3  mt-3 mb-5">buku</li>
-          <li className="border p-3  mb-5">Man</li>
-          <li className="border p-3  mb-5">fashion</li>
+          {category.map((data, index) => (
+            <li className="border p-3 mt-5 flex items-center rounded-md" key={index}>
+              <img className="w-8 mr-5" src={data.image} />
+              <p className="text-md">{data.description}</p>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
