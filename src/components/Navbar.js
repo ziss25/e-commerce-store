@@ -14,18 +14,14 @@ const Navbar = ({ isMenu, setIsMenu, version }) => {
       name: 'Product',
       path: '#Product',
     },
-    {
-      name: 'Catagory',
-      path: '#Catagory',
-    },
   ];
 
   return (
     <div className={version === 'desktop' ? 'navbarDesktop' : 'navbarMobile'}>
       <div className="">{version === 'desktop' ? <TextNavbar /> : <InputSearchMobile version={version} />}</div>
 
-      <div className="hidden List md:flex">
-        <ul className=" menu-horizontal px-1 gap-2 md:gap-7 ">
+      <div className="hidden List md:flex translate-x-4">
+        <ul className="menu-horizontal px-1 gap-2 md:gap-7 ">
           {linkText.map((text, index) => (
             <li key={index}>
               <a className={selectedList === index ? 'listActive' : null} href={text.path} onClick={() => setSelecetedList(index)}>

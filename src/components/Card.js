@@ -1,0 +1,25 @@
+const Card = ({ product }) => {
+  const { brand, description, price, category, image } = product;
+  const harga = `Rp ${price.toLocaleString('id-ID')}`;
+  return (
+    <div className="card bg-base-100 shadow-md rounded-sm">
+      <figure>
+        <img src={image} alt="Shoes" />
+      </figure>
+      <div className="body-card p-2">
+        <p className="text-xs text-[#aeaeae]">{category}</p>
+        <h2 className="card-title mt-1 mb-1">{brand}</h2>
+        <p className="text-sm text-[#aeaeae] ">{description}</p>
+        <div className="footer-card flex justify-between mt-4 items-center">
+          <p className="price font-semibold ">{harga}</p>
+          <button className="items-center flex px-2 text-[var(--primary)] bg-[var(--primary-accent)] ">
+            <p className="text-sm mr-1">Buy</p>
+            <i className="fa fa-cart-plus" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Card;

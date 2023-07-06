@@ -1,14 +1,18 @@
+import AllCategory from '../components/AllCategory';
+import Cards from '../parent/Cards';
+import CaroselBanner from '../components/CaroselBanner';
+import SearchProduct from '../components/SearchProduct';
+
 const Main = () => {
   return (
-    <main className="max-w-2xl mx-auto border p-2">
-      <div id="Home" className="h-96 bg-blue-500 pt-16">
-        Home
+    <main className="max-w-2xl mx-auto p-2">
+      <div id="Home" className="pt-20 ">
+        <CaroselBanner />
+        <AllCategory />
       </div>
-      <div id="Product" className="h-96 bg-green-500 pt-16">
-        Product
-      </div>
-      <div id="Catagory" className="h-96 bg-red-500 pt-16 mb-20">
-        Category
+      <div id="Product" className="pt-8 mb-2 md:pt-16">
+        <SearchProduct />
+        <Cards />
       </div>
     </main>
   );

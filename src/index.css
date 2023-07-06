@@ -21,13 +21,13 @@
     @apply border text-sm text-white bg-[var(--primary)] px-3 py-1 rounded-md;
   }
   .menuList {
-    @apply fixed z-10 w-full overflow-auto top-0 bg-white px-2 shadow-lg md:hidden;
+    @apply fixed z-20 w-full overflow-auto top-0 bg-white px-2 shadow-lg md:hidden;
   }
   .navbarDesktop {
-    @apply fixed flex navbar h-16 min-h-0 bg-white justify-between px-5 shadow-md top-0 left-0 right-0;
+    @apply fixed flex z-10 navbar h-16 min-h-0 bg-white justify-between px-5 shadow-md top-0 left-0 right-0;
   }
   .navbarMobile {
-    @apply fixed flex navbar min-h-0 h-16 top-0 left-0 right-0  bg-[var(--primary)] justify-between p-3 shadow-md;
+    @apply fixed  flex z-10 navbar min-h-0 h-16 top-0 left-0 right-0  bg-[var(--primary)] justify-between p-3 shadow-md;
   }
 }
 
