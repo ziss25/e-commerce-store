@@ -1,21 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
+import { CategoryContext } from '../utils/CategoryContext';
+
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 
 const AllCategory = () => {
-  const [AllCategory, setAllCategory] = useState([]);
-
-  const getAllCategory = async () => {
-    const data = await (await fetch('https://api.creativeacademyid.com/category')).json();
-    setAllCategory(data);
-  };
-
-  useEffect(() => {
-    getAllCategory();
-  }, []);
+  const category = useContext(CategoryContext);
 
   return (
     <div className="Allcategory mt-4">
@@ -33,7 +26,7 @@ const AllCategory = () => {
         grabCursor={true}
         className="mySwiper"
       >
-        {AllCategory.map((category, index) => (
+        {category.map((category, index) => (
           <SwiperSlide key={index}>
             <div className="bg-white w-18 flex flex-col rounded-md overflow-hidden">
               <img src={category.image} />

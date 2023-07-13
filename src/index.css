@@ -29,18 +29,25 @@
   .navbarMobile {
     @apply fixed  flex z-10 navbar min-h-0 h-16 top-0 left-0 right-0  bg-[var(--primary)] justify-between p-3 shadow-md;
   }
+  .cart {
+    @apply fixed bg-white w-0 right-0 top-0 bottom-0 z-50 transition-all duration-1000 ease-in-out;
+  }
 }
 
 @layer utilities {
   .animateMenuList {
     @apply h-0 transition-all duration-1000 ease-in;
   }
-
   .animateMenuList__active {
     @apply h-screen transition-all duration-1000 ease-in-out;
   }
-
   .listActive {
     @apply text-[var(--primary)];
+  }
+  .cartActive {
+    @apply w-full transition-all duration-1000 ease-in-out md:w-2/5;
+  }
+  .box-blackActive {
+    @apply bg-black fixed top-0 right-0 bottom-0 left-0 opacity-40 z-20;
   }
 }

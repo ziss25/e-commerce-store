@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
+import { CategoryContext } from '../utils/CategoryContext';
 import close from '../icons/close.svg';
 
 const MenuListMobile = ({ isMenu, setIsMenu }) => {
-  const [category, setCategory] = useState([]);
-
   let classMenu;
   if (isMenu) {
     classMenu = 'menuList animateMenuList animateMenuList__active px-2';
@@ -11,15 +10,7 @@ const MenuListMobile = ({ isMenu, setIsMenu }) => {
     classMenu = 'menuList animateMenuList';
   }
 
-  const getCategory = async () => {
-    const data = await (await fetch('https://api.creativeacademyid.com/category')).json();
-    setCategory(data);
-  };
-
-  useEffect(() => {
-    getCategory();
-  }, []);
-
+  const category = useContext(CategoryContext);
   return (
     <div className={classMenu}>
       <div className=" header-menuList flex items-center mt-2">

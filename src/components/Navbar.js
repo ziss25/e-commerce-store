@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import InputSearchMobile from './InputSearchMobile';
 import TextNavbar from './TextNavbar';
 import Menu from '../icons/menu.svg';
+import { ShoppingCartContext } from '../utils/ShoppingCart';
 
 const Navbar = ({ isMenu, setIsMenu, version }) => {
   const [selectedList, setSelecetedList] = useState(0);
+  const { cart, setCart, cartItem } = useContext(ShoppingCartContext);
   const linkText = [
     {
       name: 'Home',
@@ -31,7 +33,16 @@ const Navbar = ({ isMenu, setIsMenu, version }) => {
           ))}
         </ul>
         <div className="icon_cart ml-5 border-l-2 border-gray-100 pl-4">
-          <i className="fa fa-shopping-bag" aria-hidden="true"></i>
+          <button
+            className="relative"
+            onClick={() => {
+              setCart(!cart);
+            }}
+          >
+            {cartItem.length ? <p className="absolute text-white bg-[var(--primary)] -top-[5px] -right-[10px] text-sm w-5 h-5 rounded-full scale-75">{cartItem.length}</p> : null}
+
+            <i className="fa fa-shopping-bag" aria-hidden="true"></i>
+          </button>
         </div>
       </div>
 
@@ -41,7 +52,13 @@ const Navbar = ({ isMenu, setIsMenu, version }) => {
       </div>
 
       <div className="md:hidden">
-        <button className="icon_cart mr-4 text-white">
+        <button
+          className="icon_cart mr-4 text-white relative"
+          onClick={() => {
+            setCart(!cart);
+          }}
+        >
+          {cartItem.length ? <p className="absolute text-white bg-red-700 -top-[5px] -right-[10px] text-sm w-5 h-5 rounded-full scale-75">{cartItem.length}</p> : null}
           <i className="fa fa-shopping-bag" aria-hidden="true"></i>
         </button>
         <button className="mr-4">

@@ -1,6 +1,16 @@
-const Card = ({ product }) => {
+import { useContext } from 'react';
+import { ShoppingCartContext } from '../utils/ShoppingCart';
+
+const Card = ({ product, index }) => {
+  const { increaseCartQuantity } = useContext(ShoppingCartContext);
+
   const { brand, description, price, category, image } = product;
   const harga = `Rp ${price.toLocaleString('id-ID')}`;
+
+  const handlerSelectedCart = () => {
+    increaseCartQuantity(product);
+  };
+
   return (
     <div className="card bg-base-100 shadow-md rounded-sm">
       <figure>
@@ -12,7 +22,7 @@ const Card = ({ product }) => {
         <p className="text-sm text-[#aeaeae] ">{description}</p>
         <div className="footer-card flex justify-between mt-4 items-center">
           <p className="price font-semibold ">{harga}</p>
-          <button className="items-center flex px-2 text-[var(--primary)] bg-[var(--primary-accent)] ">
+          <button className="items-center flex px-2 text-[var(--primary)] bg-[var(--primary-accent)] " onClick={() => handlerSelectedCart()}>
             <p className="text-sm mr-1">Buy</p>
             <i className="fa fa-cart-plus" aria-hidden="true"></i>
           </button>

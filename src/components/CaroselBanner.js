@@ -15,7 +15,7 @@ const CaroselBanner = () => {
     setBanner(data);
   };
   useEffect(() => {
-    console.log('use effect run');
+    // console.log('use effect run');
     getBanners();
   }, []);
 
