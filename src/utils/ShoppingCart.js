@@ -1,12 +1,12 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 const ShoppingCartContext = createContext();
 
 const ShoppingCartProvider = ({ children }) => {
-  const [cartItem, setCartItem] = useState([]);
+  // get item dari local storage jika tidak ada kita set empty arr
+  const [cartItem, setCartItem] = useState(JSON.parse(localStorage.getItem('items')) || []);
 
   // toogle cart display
   const [cart, setCart] = useState(false);
-
   const increaseCartQuantity = (id) => {
     setCartItem((currItems) => {
       if (currItems.find((item) => item.id === id) == null) {

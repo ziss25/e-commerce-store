@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import ItemCart from '../components/ItemCart';
 import { ShoppingCartContext } from '../utils/ShoppingCart';
+import Swal from 'sweetalert2';
 
 const Cart = () => {
   const { cart, setCart } = useContext(ShoppingCartContext);
-  const { cartItem, removeFromCart, increaseCartQuantity } = useContext(ShoppingCartContext);
+  const { cartItem, increaseCartQuantity, setCartItem } = useContext(ShoppingCartContext);
   const [totals, setTotals] = useState(0);
   let countTotal = 0;
 
@@ -16,8 +17,13 @@ const Cart = () => {
     setTotals(`Rp ${countTotal.toLocaleString('id-ID')}`);
   };
 
+  const saveLocalStorage = () => {
+    localStorage.setItem('items', JSON.stringify(cartItem));
+  };
+
   useEffect(() => {
     totalAllProducts();
+    saveLocalStorage();
   });
 
   return (
@@ -30,30 +36,36 @@ const Cart = () => {
                 setCart(!cart);
               }}
             >
-              <i className="fa fa-times text-2xl" aria-hidden="true"></i>
+              <i className="fa fa-times text-2xl text-[var(--primary)]" aria-hidden="true"></i>
             </button>
             <h4>Cart Product</h4>
           </div>
 
-          <div className="h-full">
-            <hr className="mb-2" />
-            <div className="product-cart-parent p-3 max-h-80 overflow-auto md:max-h-96">
-              {cartItem.length === 0 ? <h1>tidak ada items</h1> : null}
+          <div className="grid cart-product-grid">
+            <div className="product-cart-parent  border-y-2 overflow-auto p-2">
+              {cartItem.length === 0 ? <h1 className="text-center">tidak ada items</h1> : null}
               {cartItem.map((product, index) => (
                 <ItemCart key={index} product={product} increaseCartQuantity={increaseCartQuantity} />
               ))}
             </div>
-            <hr className="mt-2" />
 
-            <div className="checkout-grop px-2 absolute bottom-0 py-2 right-0 left-0 flex flex-col justify-end gap-5 px-3 bg-white">
-              <div className="total font-bold text-xl flex justify-between px-1">
+            <div className="checkout-grop px-2 bg-white">
+              <div className="total font-bold text-lg flex justify-between mb-3">
                 <h2>Total</h2>
                 <h3 className="text-[var(--primary)]">{totals}</h3>
               </div>
               <button
                 className="btn w-full bg-[var(--primary)] text-white"
                 onClick={() => {
-                  alert('fitur not avaible');
+                  Swal.fire({
+                    title: 'buy success!',
+                    text: 'terimaKasih telah berbelanja di fakeStore',
+                    icon: 'success',
+                    confirmButtonText: 'ok',
+                  });
+                  setTimeout(() => {
+                    setCartItem([]);
+                  }, 2000);
                 }}
               >
                 Buy Now

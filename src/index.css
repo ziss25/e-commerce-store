@@ -7,6 +7,11 @@
   --primary-accent: #fff6e4;
 }
 
+.cart-product-grid {
+  grid-template-rows: 1fr 100px;
+  height: 95%;
+}
+
 @layer base {
   html {
     @apply scroll-smooth;

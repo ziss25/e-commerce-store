@@ -61,12 +61,6 @@ const Navbar = ({ isMenu, setIsMenu, version }) => {
           {cartItem.length ? <p className="absolute text-white bg-red-700 -top-[5px] -right-[10px] text-sm w-5 h-5 rounded-full scale-75">{cartItem.length}</p> : null}
           <i className="fa fa-shopping-bag" aria-hidden="true"></i>
         </button>
-        <button className="mr-4">
-          <i className="fa fa-envelope text-white" aria-hidden="true"></i>
-        </button>
-        <button className="mr-4">
-          <i className="fa fa-bell text-white" aria-hidden="true"></i>
-        </button>
         <button
           className="hamb-menu"
           onClick={() => {

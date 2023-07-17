@@ -12,7 +12,7 @@ const AllCategory = () => {
 
   return (
     <div className="Allcategory mt-4">
-      <button className="border text-sm text-white bg-[var(--primary)] px-3 py-1 rounded-md mb-4 text-xs font-semibold md:text-sm">Product Category</button>
+      <button className="border text-md text-white bg-[var(--primary)] px-4 py-2 rounded-md mb-4 text-xs font-semibold md:text-sm">Product Category</button>
       <Swiper
         slidesPerView={4}
         spaceBetween={20}
